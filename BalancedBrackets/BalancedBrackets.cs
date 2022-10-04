@@ -28,6 +28,12 @@ namespace BalancedBracketsNS
             int brackets = 0;
             foreach (char ch in str.ToCharArray())
             {
+                // Check that opening bracket goes first
+                if (brackets < 0)
+                {
+                    return false;
+                }
+
                 if (ch == '[')
                 {
                     brackets++;
@@ -37,6 +43,7 @@ namespace BalancedBracketsNS
                     brackets--;
                 }
             }
+            // Check that at the end all the brackets are closed
             return brackets == 0;
         }
     }
